@@ -1,0 +1,25 @@
+<div class='col-12 col-md-10 mb-3 mx-auto'>
+<div class="card {% if not my_blog.publish_date %} bg-dark text-light {% endif %}">
+  <div class="card-body">
+    <!-- {% if my_blog.image %}
+        <a href="{{ my_blog.get_absolute_url }}">
+            <img src="{{ my_blog.image.url }}" class='card-img-top col-2 row-1'/>
+        </a>
+    {% endif %} -->
+    <h5 class="card-title">{{ my_blog.title }}</h5>
+    <p class="card-text">
+    	<small class="text-muted">{{ my_blog.publish_date }}</small>
+    	{% if truncate %}
+    		{{ my_blog.content|linebreaks|truncatewords:30 }}
+    	{% else %}
+    		{{ my_blog.content|linebreaks }}
+    	{% endif %}
+
+	</p>
+	{% if not detail %}
+		{% if not my_blog.publish_date %} Draft {% endif %}
+    	<a href="{{ my_blog.get_absolute_url }}">View</a>
+    {% endif %}
+  </div>
+</div>
+</div>
